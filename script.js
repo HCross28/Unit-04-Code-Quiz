@@ -6,6 +6,7 @@ var answerA = document.getElementById("answer-a");
 var answerB = document.getElementById("answer-b");
 var answerC = document.getElementById("answer-c");
 var answerD = document.getElementById("answer-d");
+var score = 0;
 
 
 //Score Screen Button Functionality
@@ -16,7 +17,7 @@ document.getElementById("score").addEventListener("click", scoreScreen);
 //This will call the first function into play
 openingPage()
 
-//Functions listed below are a step by step course through the quiz site. One function leads to the next upon answering a question
+//Functions listed below are a step by step course through the quiz site. One function leads to the next, upon answering a question
 function openingPage(){
     
     openingQuestion.querySelector("#question-text").innerHTML = "Are You Ready to Begin the Coding Quiz?";
@@ -30,7 +31,6 @@ function openingPage(){
 
 
 function quizInit(){
-    console.log("hello");
     
     openingQuestion.querySelector("#question-text").innerHTML = "Question 1. What is a String?";
 
@@ -44,7 +44,7 @@ function quizInit(){
     answerD.textContent = "a list of items";
 
     document.getElementById("a-btn").addEventListener("click", questionTwo);
-    document.getElementById("b-btn").addEventListener("click", questionTwo);
+    document.getElementById("b-btn").addEventListener("click", questionOneCorrect);
     document.getElementById("c-btn").addEventListener("click", questionTwo);
     document.getElementById("d-btn").addEventListener("click", questionTwo);
 
@@ -69,11 +69,17 @@ function quizInit(){
 };
 
 
+function questionOneCorrect(){
+    score++;
+    console.log(score);
+    questionTwo();
+};
+
+
 
 function questionTwo() {
     openingQuestion.querySelector("#question-text").innerHTML = "Question 2. What is a Boolean?";
 
-    console.log("wazzup");
 
     answerA.textContent = "stores a series of characters like \"John Doe\"";
     answerB.textContent = "the additive result of two numbers";
@@ -82,23 +88,27 @@ function questionTwo() {
 
     document.getElementById("a-btn").addEventListener("click", questionThree);
     document.getElementById("b-btn").addEventListener("click", questionThree);
-    document.getElementById("c-btn").addEventListener("click", questionThree);
+    document.getElementById("c-btn").addEventListener("click", questionTwoCorrect);
     document.getElementById("d-btn").addEventListener("click", questionThree);
 
+};
+
+function questionTwoCorrect(){
+    score++;
+    console.log(score);
+    questionThree();
 };
 
 
 function questionThree() {
     openingQuestion.querySelector("#question-text").innerHTML = "Question 3. What Case Type Will You Use While Coding JavaScript?";
 
-    console.log("foshizzle");
-
     answerA.textContent = "CamelCase";
     answerB.textContent = "dash-spacing";
     answerC.textContent = "UPPERCASE";
     answerD.textContent = "lowercase";
 
-    document.getElementById("a-btn").addEventListener("click", questionFour);
+    document.getElementById("a-btn").addEventListener("click", questionThreeCorrect);
     document.getElementById("b-btn").addEventListener("click", questionFour);
     document.getElementById("c-btn").addEventListener("click", questionFour);
     document.getElementById("d-btn").addEventListener("click", questionFour);
@@ -106,11 +116,15 @@ function questionThree() {
 
 };
 
+function questionThreeCorrect(){
+    score++;
+    console.log(score);
+    questionFour();
+};
+
 
 function questionFour() {
     openingQuestion.querySelector("#question-text").innerHTML = "Question 4. What is an Array?";
-
-    console.log("Wubba Lubba Dub Dub!");
 
     answerA.textContent = "A True or False Value";
     answerB.textContent = "Trick Question! It's an HTML Element";
@@ -119,28 +133,43 @@ function questionFour() {
 
     document.getElementById("a-btn").addEventListener("click", questionFive);
     document.getElementById("b-btn").addEventListener("click", questionFive);
-    document.getElementById("c-btn").addEventListener("click", questionFive);
+    document.getElementById("c-btn").addEventListener("click", questionFourCorrect);
     document.getElementById("d-btn").addEventListener("click", questionFive);
 
 
 };
 
+// For some reason the "score++;" adds itself twice resulting in 4 and 5 in the console... No Idea why it does this?
+function questionFourCorrect(){
+    score++;
+    console.log(score);
+    questionFive();
+};
+
 function questionFive() {
     openingQuestion.querySelector("#question-text").innerHTML = "Question 5. What is Your Favorite Color?";
 
-    console.log("I've run out of console.log ideas at this point...");
 
     answerA.textContent = "Blue... No... YEEeellllloooooooooooooooooooooooooow";
     answerB.textContent = "Red";
     answerC.textContent = "Lavender";
     answerD.textContent = "Purple";
 
-    document.getElementById("a-btn").addEventListener("click", scoreScreen);
+    document.getElementById("a-btn").addEventListener("click", questionFiveCorrect);
     document.getElementById("b-btn").addEventListener("click", scoreScreen);
     document.getElementById("c-btn").addEventListener("click", scoreScreen);
     document.getElementById("d-btn").addEventListener("click", scoreScreen);
 
 
+};
+
+//This is even weirder. The console shows 6 then a 7 and then another 7? This makes no sense why its doing this. 
+//Hopefully you can give me extra credit for the Monty Python Reference :D 
+
+function questionFiveCorrect(){
+    score++;
+    console.log(score);
+    scoreScreen();
 };
 
 
@@ -149,12 +178,12 @@ function scoreScreen() {
     mngScoreScreen.style.display = "block";
     mngScoreScreen.style.textAlign = "center";
 
-    console.log("nope");
-
     mngAnswerSpace.style.display = "none";
     mngYesNo.style.display = "none";
 
     document.getElementById("timer").style.display = "none";
+
+    console.log(score);
 
 };
 
