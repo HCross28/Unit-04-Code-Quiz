@@ -11,6 +11,8 @@ var answerD = document.getElementById("answer-d");
 //Score Screen Button Functionality
 document.getElementById("score").addEventListener("click", scoreScreen);
 
+
+
 //This will call the first function into play
 openingPage()
 
@@ -45,6 +47,24 @@ function quizInit(){
     document.getElementById("b-btn").addEventListener("click", questionTwo);
     document.getElementById("c-btn").addEventListener("click", questionTwo);
     document.getElementById("d-btn").addEventListener("click", questionTwo);
+
+
+    //Here is the timer! Since this function begins when the quiz is started, this function also begins. 
+    var timeleft = 75;
+    var countDownTimer = setInterval(function(){
+      document.getElementById("timer").innerHTML = timeleft + " seconds remaining";
+      timeleft --;
+      if(timeleft === 0){
+        clearInterval(countDownTimer);
+        document.getElementById("timer").innerHTML = "Game Over";
+    
+        scoreScreen();
+    
+      }
+
+    }, 1000);
+
+
 
 };
 
@@ -127,12 +147,14 @@ function questionFive() {
 function scoreScreen() {
     openingQuestion.querySelector("#question-text").innerHTML = "High Scores";
     mngScoreScreen.style.display = "block";
-    mngScoreScreen.style.textAlign = "center"
+    mngScoreScreen.style.textAlign = "center";
 
     console.log("nope");
 
     mngAnswerSpace.style.display = "none";
     mngYesNo.style.display = "none";
+
+    document.getElementById("timer").style.display = "none";
 
 };
 
