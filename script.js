@@ -1,21 +1,143 @@
-var openingQuestion;
-var openingAnswers;
-
-
-
-//function openingPage(){
 var openingQuestion = document.getElementById("question-space");
-openingQuestion.querySelector("#question-text").innerHTML = "Are You Ready to Begin the Coding Quiz?";
+var mngAnswerSpace = document.getElementById("answer-space");
+var mngScoreScreen = document.getElementById("high-scores")
+var mngYesNo = document.getElementById("yesno");
+var answerA = document.getElementById("answer-a");
+var answerB = document.getElementById("answer-b");
+var answerC = document.getElementById("answer-c");
+var answerD = document.getElementById("answer-d");
 
-var openingAnswers = document.getElemtentById("answer-list");
-openingAnswers.querySelector("#a-btn").innerHTML = "Yes!";
-//}
+
+//Score Screen Button Functionality
+document.getElementById("score").addEventListener("click", scoreScreen);
+
+//This will call the first function into play
+openingPage()
+
+//Functions listed below are a step by step course through the quiz site. One function leads to the next upon answering a question
+function openingPage(){
+    
+    openingQuestion.querySelector("#question-text").innerHTML = "Are You Ready to Begin the Coding Quiz?";
+    openingQuestion.querySelector("#question-text").style.textAlign = "center";
+
+    mngAnswerSpace.style.display = "none";
+    mngScoreScreen.style.display = "none";
+
+    document.getElementById("yes-btn").addEventListener("click", quizInit);
+};
+
+
+function quizInit(){
+    console.log("hello");
+    
+    openingQuestion.querySelector("#question-text").innerHTML = "Question 1. What is a String?";
+
+    mngYesNo.style.display = "none";
+
+    mngAnswerSpace.style.display = "block";
+
+    answerA.textContent = "green";
+    answerB.textContent = "stores a series of characters like \"John Doe\"";
+    answerC.textContent = "a number value";
+    answerD.textContent = "a list of items";
+
+    document.getElementById("a-btn").addEventListener("click", questionTwo);
+    document.getElementById("b-btn").addEventListener("click", questionTwo);
+    document.getElementById("c-btn").addEventListener("click", questionTwo);
+    document.getElementById("d-btn").addEventListener("click", questionTwo);
+
+};
 
 
 
+function questionTwo() {
+    openingQuestion.querySelector("#question-text").innerHTML = "Question 2. What is a Boolean?";
+
+    console.log("wazzup");
+
+    answerA.textContent = "stores a series of characters like \"John Doe\"";
+    answerB.textContent = "the additive result of two numbers";
+    answerC.textContent = "a true or false value";
+    answerD.textContent = "gold or silver in bulk before coining, or valued by weight";
+
+    document.getElementById("a-btn").addEventListener("click", questionThree);
+    document.getElementById("b-btn").addEventListener("click", questionThree);
+    document.getElementById("c-btn").addEventListener("click", questionThree);
+    document.getElementById("d-btn").addEventListener("click", questionThree);
+
+};
 
 
-console.log ("Hello");
+function questionThree() {
+    openingQuestion.querySelector("#question-text").innerHTML = "Question 3. What Case Type Will You Use While Coding JavaScript?";
+
+    console.log("foshizzle");
+
+    answerA.textContent = "CamelCase";
+    answerB.textContent = "dash-spacing";
+    answerC.textContent = "UPPERCASE";
+    answerD.textContent = "lowercase";
+
+    document.getElementById("a-btn").addEventListener("click", questionFour);
+    document.getElementById("b-btn").addEventListener("click", questionFour);
+    document.getElementById("c-btn").addEventListener("click", questionFour);
+    document.getElementById("d-btn").addEventListener("click", questionFour);
+
+
+};
+
+
+function questionFour() {
+    openingQuestion.querySelector("#question-text").innerHTML = "Question 4. What is an Array?";
+
+    console.log("Wubba Lubba Dub Dub!");
+
+    answerA.textContent = "A True or False Value";
+    answerB.textContent = "Trick Question! It's an HTML Element";
+    answerC.textContent = "A List of Values";
+    answerD.textContent = "A Gun That Zaps People";
+
+    document.getElementById("a-btn").addEventListener("click", questionFive);
+    document.getElementById("b-btn").addEventListener("click", questionFive);
+    document.getElementById("c-btn").addEventListener("click", questionFive);
+    document.getElementById("d-btn").addEventListener("click", questionFive);
+
+
+};
+
+function questionFive() {
+    openingQuestion.querySelector("#question-text").innerHTML = "Question 5. What is Your Favorite Color?";
+
+    console.log("I've run out of console.log ideas at this point...");
+
+    answerA.textContent = "Blue... No... YEEeellllloooooooooooooooooooooooooow";
+    answerB.textContent = "Red";
+    answerC.textContent = "Lavender";
+    answerD.textContent = "Purple";
+
+    document.getElementById("a-btn").addEventListener("click", scoreScreen);
+    document.getElementById("b-btn").addEventListener("click", scoreScreen);
+    document.getElementById("c-btn").addEventListener("click", scoreScreen);
+    document.getElementById("d-btn").addEventListener("click", scoreScreen);
+
+
+};
+
+
+function scoreScreen() {
+    openingQuestion.querySelector("#question-text").innerHTML = "High Scores";
+    mngScoreScreen.style.display = "block";
+    mngScoreScreen.style.textAlign = "center"
+
+    console.log("nope");
+
+    mngAnswerSpace.style.display = "none";
+    mngYesNo.style.display = "none";
+
+};
+
+
+
 
 
 /* Landing page: First page shows the opening question w/ "Are you Ready to Begin the Coding Quiz?"

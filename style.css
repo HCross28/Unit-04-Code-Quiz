@@ -96,3 +96,12 @@ li {
     padding:5px;
     margin-right: 15px;
 }
+
+.answer {
+    display:inline;
+   /* margin-left: 15px; */
+}
+
+#yesno {
+    text-align: center; 
+}
